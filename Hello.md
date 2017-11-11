@@ -26,18 +26,29 @@ function handleRequest(request, response) {
 }
 
 function good(request, response){
-	response.end("I cant think of anything good to say")
+	response.end(randomCompliment())
 }
 
 function bad(request, response) {
-	response.end("You look awful today")
+	response.end(randomInsults())
 }
 
-function RandomInsults (){
+function randomInsults (){
 	var insults = [
 	"You look awful today", 
 	"Hope you drop your lunch", 
-	""]
+	"Looks like someone hit you with the ugly bus"]
+	var randomizer = insults[Math.floor(Math.random() * insults.length)];
+	return randomizer;
+}
+
+function randomCompliment(){
+	var compliment = [
+	"Nice hat",
+	"You look like a person today",
+	"You put your shoes on the right sides today"]
+	var randomizer = compliment[Math.floor(Math.random() * compliment.length)];
+	return randomizer;
 }
 
 var server1 = http.createServer(good)
